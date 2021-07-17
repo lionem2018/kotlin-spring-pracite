@@ -12,15 +12,15 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 class HomeControllerTest {
 
     @Autowired
-    private var mockMvc: MockMvc? = null
+    private lateinit var mockMvc: MockMvc
 
     @Test
     fun testHomePage() {
-        mockMvc?.perform(get("/"))
-                ?.andExpect(status().isOk)
-                ?.andExpect(view().name("home"))
-                ?.andExpect(content().string(
-                        containsString("Welcome to...")
-                ))
+        mockMvc.perform(get("/"))
+            .andExpect(status().isOk)
+            .andExpect(view().name("home"))
+            .andExpect(content().string(
+                containsString("Welcome to...")
+            ))
     }
 }
